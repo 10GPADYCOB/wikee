@@ -9,7 +9,6 @@ def clear_screen():
     else:
         os.system('clear')
 
-# Цвета
 ORANGE = '\033[33m'
 RED = '\033[91m'
 GREEN = '\033[92m'
@@ -88,4 +87,5 @@ while True:
     elif choice == "0":
         print(f"\n{RED}Выход из программы...{RESET}")
         time.sleep(5)
+
         exit()
