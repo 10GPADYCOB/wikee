@@ -87,5 +87,5 @@ while True:
     elif choice == "0":
         print(f"\n{RED}Выход из программы...{RESET}")
         time.sleep(5)
-
         exit()
+
