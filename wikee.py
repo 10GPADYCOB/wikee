@@ -53,7 +53,7 @@ while True:
     clear()
     menu()
     
-    choice = input("\nвыберите пункт (1-9): ")
+    choice = input(f"\n{CYAN}выберите пункт (1-9): {RESET}")
     if choice not in valid:
         input(f"{RED}error. Введите одно из девяти\n{RESET}Нажмите Enter чтобы перезапустить графический интерфейс пользователя...")
         continue
