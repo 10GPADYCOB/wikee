@@ -20,7 +20,7 @@ PURPLE = '\033[35m'
 YELLO = '\033[93m'
 
 def menu():
-    print(f"\n{GREEN}―――――――――――――――――――\n МЕНЮ ВЫБОРА ЖАЛОБ\n―――――――――――――――――――{RESET}\n{BLUE}[1]  просто снос\n[2]  порнография\n[3]  незаконные действия\n[4]  информация о программе\n[77]  доп. жалобы\n\n[99]  ранк жалоб\n[123]  обновить wikee\n{RED}[0]  выход{RESET}")
+    print(f"\n{GREEN}―――――――――――――――――――\n МЕНЮ ВЫБОРА ЖАЛОБ\n―――――――――――――――――――{RESET}\n{BLUE}[1]  просто снос\n[2]  порнография\n[3]  незаконные действия\n[4]  информация о программе\n[5]  доп. жалобы\n\n[6]  ранк жалоб\n[7]  обновить wikee\n{RED}[0]  выход{RESET}")
 
 def info():
     clear()
@@ -34,19 +34,23 @@ def rank():
 
 def dop():
     clear()
-    print(f"{GRAY}―――――――――――――――――――\n    ДОП. ЖАЛОБЫ\n―――――――――――――――――――\n{PINK}[5]  воровство контента\n[0]  назад{RESET}")
+    print(f"{GRAY}―――――――――――――――――――\n    ДОП. ЖАЛОБЫ\n―――――――――――――――――――\n{PINK}[1]  воровство контента\n[0]  назад{RESET}")
     
     s_choice = input(f"\n{CYAN}выберите пункт: {RESET}")
     
-    if s_choice == "5":
+    if s_choice == "1":
         clear()
         print(f"{GREEN}вы выбрали: воровство контента{RESET}\n{BLUE}пожаловаться > прочее\n\n{RED}Внимание, воровство: 2 типа:\n1. тип: справа есть не убранные репосты, лайки и т.д.\n2. тип: есть авторский знак likee в видео{RESET}")
         
-        typ = input(f"\n{CYAN}Выберите тип (1/2):{RESET}")
-        if typ == "1" or typ == "2":
-            input("\n\nразработка, бро")
+        typ = input(f"\n{CYAN}Выберите тип (1/2): {RESET}")
+        if typ == "1":
+            print(f"{GREEN}вы выбрали: 1 тип{RESET}\n{BLUE}пожаловаться > прочее\n{RESET}Описание жалобы:\n\nвидео своровано у другого автора, потому что справа есть просмотр лайков, комментариев, репостов, и так далее\n")
+            enters()
+        elif typ == "2":
+            print(f"{GREEN}вы выбрали: 2 тип{RESET}\n{BLUE}пожаловаться > прочее\n{RESET}Описание жалобы:\n\nвидео своровано у другого автора, доказать можно тем, что на видео есть знак likee который появляется при скачивании видео\n")
+            enters()
         else:
-            input("\nНеверный выбор!")
+            input("Неверный выбор!")
     
     elif s_choice == "0":
         return
@@ -78,13 +82,13 @@ while True:
         for _ in range(5):
             print(f"{RED}error. Введите 1{RESET}")
 
-valid = ["1", "2", "3", "4", "99", "77", "0", "5", "123"]
+valid = ["1", "2", "3", "4", "5", "6", "0", "7"]
 
 while True:
     clear()
     menu()
 
-    choice = input(f"\n{CYAN}выберите пункт (1-9): {RESET}")
+    choice = input(f"\n{CYAN}выберите пункт (1-7): {RESET}")
     if choice not in valid:
         input(f"{RED}error. Введите одно из девяти\n{RESET}Нажмите Enter чтобы перезапустить графический интерфейс пользователя...")
         continue
@@ -107,17 +111,17 @@ while True:
     elif choice == "4":
         info()
 
-    elif choice == "77":
+    elif choice == "5":
         dop()
 
-    elif choice == "99":
+    elif choice == "6":
         rank()
         
     elif choice == "0":
         print(f"\n{RED}Выход из программы...{RESET}")
         time.sleep(5)
         exit()
-    elif choice == "123":
+    elif choice == "7":
         if input("обновить? y/n:\n") == 'y':
             os.system("rm -rf wikee && git clone https://github.com/10GPADYCOB/wikee.git && cd wikee && python wikee.py")
             exit()
