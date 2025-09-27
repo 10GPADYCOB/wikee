@@ -24,7 +24,7 @@ def menu():
 
 def info():
     clear()
-    print(f"{GRAY}――――――――――――――――――――――――\n ИНФОРМАЦИЯ О ПРОГРАММЕ\n――――――――――――――――――――――――{RESET}\n{BLUE}Разработчик: 40_JluTpoB_vodku\nВерсия: BETA 0.2\nНазвание: wikee\nНазначение: помощь в составлении жалоб,снос\nИзменения: добавлен выбор еще 1 жалобы, добавлен логотоип{RESET}")
+    print(f"{GRAY}――――――――――――――――――――――――\n ИНФОРМАЦИЯ О ПРОГРАММЕ\n――――――――――――――――――――――――{RESET}\n{BLUE}Разработчик: 40_JluTpoB_vodku\nВерсия: BETA 0.4\nНазвание: wikee\nНазначение: помощь в составлении жалоб,снос\nИзменения: добавлен выбор еще 1 жалобы, добавлен логотоип{RESET}")
     enters()
 
 def rank():
@@ -125,3 +125,4 @@ while True:
         if input("обновить? y/n:\n") == 'y':
             os.system("rm -rf wikee && git clone https://github.com/10GPADYCOB/wikee.git && cd wikee && python wikee.py")
             exit()
+
