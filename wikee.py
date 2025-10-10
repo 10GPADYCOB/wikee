@@ -144,7 +144,7 @@ while True:
                 print("\nПерезапуск...\n")
                 os.execv(sys.executable, [sys.executable] + sys.argv)
             else:
-                print(f"{YELLO}Перезапусти вручную, ленивая жопа{RESET}")
+                print(f"{YELLO}Перезапусти вручную{RESET}")
                 enters()
                 
         except subprocess.CalledProcessError as e:
@@ -156,3 +156,4 @@ while True:
         except Exception as e:
             print(f"{RED}всё сломал:{RESET} {str(e)}")
             enters()
+
