@@ -66,9 +66,8 @@ def logo():
     f"{PURPLE}$$       $$",
     "$#       #$",
     " #$     $#",
-    " $#     #$",
-    "  #$   #$",
-    "    $#$",
+    "  $#   #$",
+    "   #$ $#",
     f"{PURPLE}     $ {BLUE}O{RED} D{YELLO} K{ORANGE} A"
     ]
     for line in art:
@@ -138,11 +137,11 @@ while True:
                 check=True
             )
             
-            print(f"{GREEN}Обновлено успешно:{RESET}")
+            print("Обновлено успешно")
             print(result.stdout)
             
             if input("Перезапустить сейчас? y/n: ").lower() == 'y':
-                print(f"{BLUE}Перезапуск...{RESET}")
+                print("\nПерезапуск...\n")
                 os.execv(sys.executable, [sys.executable] + sys.argv)
             else:
                 print(f"{YELLO}Перезапусти вручную, ленивая жопа{RESET}")
