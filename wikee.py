@@ -3,10 +3,7 @@ import os
 import time
 
 def clear():
-    if os.name == 'nt':
-        os.system('cls')
-    else:
-        os.system('clear')
+    print('\033c', end='')
 
 ORANGE = '\033[33m'
 RED = '\033[91m'
@@ -24,7 +21,7 @@ def menu():
 
 def info():
     clear()
-    print(f"{GRAY}――――――――――――――――――――――――\n ИНФОРМАЦИЯ О ПРОГРАММЕ\n――――――――――――――――――――――――{RESET}\n{BLUE}Разработчик: 40_JluTpoB_vodku\nВерсия: BETA 0.4\nНазвание: wikee\nНазначение: помощь в составлении жалоб,снос\nПоследние изменения: добавлен выбор еще 1 жалобы, добавлен логотоип, фикс с ui{RESET}")
+    print(f"{GRAY}――――――――――――――――――――――――\n ИНФОРМАЦИЯ О ПРОГРАММЕ\n――――――――――――――――――――――――{RESET}\n{BLUE}Разработчик: 40_JluTpoB_vodku\nВерсия: BETA 0.4\nНазвание: wikee\nНазначение: помощь в составлении жалоб,снос\nПоследние изменения: добавлен выбор еще 1 жалобы, добавлен логотоип, фикс с ui, фикс с автообновлением{RESET}")
     enters()
 
 def rank():
@@ -58,8 +55,7 @@ def dop():
                     input("неправильный выбор! Нажмите Enter...")
         
         elif s_choice == "0":
-            return  #был баг когда ты жмешь enter например, возврат идет в главную ui, теперь я перенаправил ее в доп ui
-                    #(я это 30 минут делал)
+            return
               
 
 def enters():
@@ -124,10 +120,40 @@ while True:
         rank()
         
     elif choice == "0":
-        print(f"\n{RED}Выход из программы...{RESET}")
-        time.sleep(5)
+        print(f"\nЧтобы выйти из папки, введите: cd\n{RED}Выход из программы...{RESET}")
+        time.sleep(1)
         exit()
     elif choice == "7":
-        if input("обновить? y/n:\n") == 'y':
-            os.system("rm -rf wikee && git clone https://github.com/10GPADYCOB/wikee.git && cd wikee && python wikee.py")
-            exit()
+     if input("обновить? y/n:\n").lower() == 'y':
+        try:
+            import subprocess
+            
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            os.chdir(script_dir)
+            
+            result = subprocess.run(
+                ['git', 'pull', 'origin', 'main'],
+                capture_output=True,
+                text=True,
+                check=True
+            )
+            
+            print(f"{GREEN}Обновлено успешно:{RESET}")
+            print(result.stdout)
+            
+            if input("Перезапустить сейчас? y/n: ").lower() == 'y':
+                print(f"{BLUE}Перезапуск...{RESET}")
+                os.execv(sys.executable, [sys.executable] + sys.argv)
+            else:
+                print(f"{YELLO}Перезапусти вручную, ленивая жопа{RESET}")
+                enters()
+                
+        except subprocess.CalledProcessError as e:
+            print(f"{RED}Ошибка при обновлении:{RESET}")
+            print(f"STDOUT: {e.stdout}")
+            print(f"STDERR: {e.stderr}")
+            enters()
+            
+        except Exception as e:
+            print(f"{RED}всё сломал:{RESET} {str(e)}")
+            enters()
